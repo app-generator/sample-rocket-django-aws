@@ -1,0 +1,5 @@
+django
+gunicorn
+whitenoise
+django-admin-soft-dashboard
+django-api-generator
