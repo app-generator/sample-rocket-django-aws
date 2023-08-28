@@ -32,6 +32,7 @@ CSRF_TRUSTED_ORIGINS = [
     "http://localhost:5085",
     "http://127.0.0.1:8000",
     "http://127.0.0.1:5085",
+    APP_DOMAIN,
 ]
 
 RENDER_EXTERNAL_HOSTNAME = os.environ.get("RENDER_EXTERNAL_HOSTNAME")
