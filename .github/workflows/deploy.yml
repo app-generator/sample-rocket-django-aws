@@ -43,15 +43,15 @@ jobs:
           script: |
             nohup sh -c "
               sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/683926714:latest &&
-              if [ \$(sudo docker ps -aq --filter "name=^/sample-rocket-django-aws$") ]; then
-                sudo docker stop sample-rocket-django-aws &&
-                sudo docker rm sample-rocket-django-aws
+              if [ \$(sudo docker ps -aq --filter "name=^/rocket-django-aws$") ]; then
+                sudo docker stop rocket-django-aws &&
+                sudo docker rm rocket-django-aws
               fi &&
               env_file=\"$HOME/.appseed/envs/.env.683926714\" &&
               if [ -f \$env_file ]; then
-                sudo docker run -d -p 52084:5000 --name sample-rocket-django-aws --network appseed-network --env-file \$env_file ${{ secrets.DOCKERHUB_USERNAME }}/683926714
+                sudo docker run -d -p 42473:5005 --name rocket-django-aws --network appseed-network --env-file \$env_file ${{ secrets.DOCKERHUB_USERNAME }}/683926714
               else
-                sudo docker run -d -p 52084:5000 --name sample-rocket-django-aws --network appseed-network ${{ secrets.DOCKERHUB_USERNAME }}/683926714
+                sudo docker run -d -p 42473:5005 --name rocket-django-aws --network appseed-network ${{ secrets.DOCKERHUB_USERNAME }}/683926714
               fi
               curl -X POST -H 'Content-type: application/json' -d '{\"status\": \"success\", \"app_id\": ${{ secrets.APP_ID }}}' ${{ secrets.CALLBACK_URL }}
-            " > ~/.appseed/logs/sample-rocket-django-aws.log 2>&1 &
+            " > ~/.appseed/logs/rocket-django-aws.log 2>&1 &
