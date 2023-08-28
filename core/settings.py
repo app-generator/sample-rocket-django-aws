@@ -18,11 +18,13 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 if not SECRET_KEY:
     SECRET_KEY = h_random()
 
-# If RENDER is present, we are in production
-DEBUG = "RENDER" not in os.environ
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = True
+
+APP_DOMAIN = os.getenv('APP_DOMAIN', 'localhost')
 
 # HOSTs List
-ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', APP_DOMAIN, '.deploypro.dev']
 
 # Add here your deployment HOSTS
 CSRF_TRUSTED_ORIGINS = [
