@@ -34,6 +34,7 @@ CSRF_TRUSTED_ORIGINS = [
     "http://127.0.0.1:5085",
     f"http://{APP_DOMAIN}",
     f"https://{APP_DOMAIN}",
+    "https://rocket-django-aws.deploypro.dev",
 ]
 
 RENDER_EXTERNAL_HOSTNAME = os.environ.get("RENDER_EXTERNAL_HOSTNAME")
